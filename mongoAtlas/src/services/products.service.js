@@ -30,6 +30,14 @@ class ProductsServices {
       const product = await this.model.postProduct(prod)
       return product
     };
+
+    deleteProduct = async (id) => {
+      await this.model.deleteProduct(id);
+    }
+
+    updateProduct = async (id, product) => {
+      await this.model.updateProduct(id, product);
+    }
   }
   
   export default ProductsServices;

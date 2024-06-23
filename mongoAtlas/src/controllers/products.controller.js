@@ -32,6 +32,24 @@ class ProductsController {
       //Solo el controlador maneja la respuesta del servidor
       res.send(prod)
     };
+
+    deleteProduct = async (req, res) => {
+      const id = req.params.id;
+      await this.services.deleteProduct(id);
+      res.send({})
+    }
+
+    updateProduct = async (req, res) => {
+      const { id } = req.params;
+      const { product } = req.body;
+
+      if (!id || !product) {
+        res.status(400).send();
+      }
+
+      await this.services.updateProduct(id, product);
+      res.status(204).send();
+    }
 }
   
   export default ProductsController;
